@@ -1,0 +1,42 @@
+{
+  "pages": [
+    "pages/index/main",
+    "pages/rank/main",
+    "pages/follow/main",
+    "pages/my/main"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "大众点评",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#999",
+    "backgroundColor": "#fafafa",
+    "selectedColor": "#333",
+    "borderStyle": "white",
+    "list": [{
+      "text": "首页",
+      "pagePath": "pages/index/main",
+      "iconPath": "static/images/home.png",
+      "selectedIconPath": "static/images/home-on.png"
+    }, {
+      "text": "排行榜",
+      "pagePath": "pages/rank/main",
+      "iconPath": "static/images/rankicon.png",
+      "selectedIconPath": "static/images/rankicon-on.png"
+    }, {
+      "text": "关注",
+      "pagePath": "pages/follow/main",
+      "iconPath": "static/images/follow.png",
+      "selectedIconPath": "static/images/follow-on.png"
+    }, {
+      "text": "我的",
+      "pagePath": "pages/my/main",
+      "iconPath": "static/images/myicon.png",
+      "selectedIconPath": "static/images/myicon-on.png"
+    }],
+    "position": "bottom"
+  }
+}
