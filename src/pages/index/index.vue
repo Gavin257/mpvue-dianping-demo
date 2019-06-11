@@ -14,16 +14,16 @@
     </div>
     <div class="category">
       <div v-for="(item, index) in category1" class="category1">
-        <img :src=item.icon>
+        <img :src=item.icon class="img">
         <div class="desc">{{item.desc}}</div>
       </div>
       <div v-for="(item, index) in category2" class="category2">
-        <img :src=item.icon>
+        <img :src=item.icon class="img">
         <div class="desc">{{item.desc}}</div>
       </div>
     </div>
     <div class="ad">
-      <img v-for="(item, index) in ad" :src=item.src>
+      <img v-for="(item, index) in ad" :src=item.src class="img">
     </div>
     <div class="recommend">
       <span class="note">猜你喜欢</span>
@@ -41,7 +41,7 @@
     </div>
     <div class="list">
       <div v-for="item in business" class="business">
-        <img :src=item.img >
+        <img :src=item.img class="img">
         <div class="info">
           <p class="name">{{item.name}}</p>
           <p class="commentNum">{{item.commentNum}}条评论</p>
@@ -64,8 +64,8 @@ export default {
     return {
       city: '杭州',
       location_icon: {
-        arrow: "../../static/images/arrow.jpg",
-        search: "../../static/images/search.jpg"
+        arrow: "../../static/images/index/arrow.jpg",
+        search: "../../static/images/index/search.jpg"
       },
       category1: [
         {
@@ -273,7 +273,7 @@ export default {
     display: inline-block;
     width: 140rpx;
     margin: 15rpx 0;
-    img { 
+    .img { 
       margin: 10rpx 20rpx;
       height: 100rpx;
       width: 100rpx;
@@ -287,7 +287,7 @@ export default {
     display: inline-block;
     width: 140rpx;
     margin: 15rpx 0;
-    img { 
+    .img { 
       margin: 10rpx 40rpx;
       height: 70rpx;
       width: 70rpx;
@@ -301,7 +301,7 @@ export default {
 .ad {
   width: 700rpx;
   margin: 0 auto;
-  img {
+  .img {
     width: 700rpx;
     height: 150rpx;
   } 
@@ -352,7 +352,7 @@ export default {
     padding-bottom: 20rpx;
     border-bottom: 1rpx solid #dfdfdf;
     margin-bottom: 20rpx;
-    img {
+    .img {
       height: 170rpx;
       width: 170rpx;
     }

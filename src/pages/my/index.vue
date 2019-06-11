@@ -11,14 +11,14 @@
     <div class="order_list">
       <div class="title">我的订单</div>
       <div class="option" v-for="item in order_list">
-        <img :src=item.icon />
+        <img :src=item.icon class="img"/>
         <p class="desc">{{item.desc}}</p>
       </div>
     </div>
     <div class="tool_list">
       <div class="title">必备工具</div>
       <div class="option" v-for="item in tool_list">
-        <img :src=item.icon />
+        <img :src=item.icon class="img"/>
         <p class="desc">{{item.desc}}</p>
       </div>
     </div>
@@ -155,7 +155,7 @@ export default {
       margin: 0 10rpx;
       width: 150rpx;
       font-size: 70%;
-      img {
+      .img {
         margin: 0 40rpx;
         width: 70rpx;
         height: 70rpx;

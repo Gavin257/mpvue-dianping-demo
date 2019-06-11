@@ -210,7 +210,7 @@ export default {
     .business {
       display: flex;
       margin: 10rpx 0;
-      img {
+      .img {
         width: 170rpx;
         height: 170rpx;
       }

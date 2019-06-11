@@ -11,7 +11,7 @@
       </div>
       <div class="img_container">
         <div  class="img" v-for="(pic, _index0) in item.images">
-          <img v-if="_index0 < 5" :src=pic mode="aspectFill" :data-mx="index" :data-idx="_index0" @click="handleImagePreview"  />
+          <img  class="image" v-if="_index0 < 5" :src=pic mode="aspectFill" :data-mx="index" :data-idx="_index0" @click="handleImagePreview"  />
         </div>
           <div v-if="item.images.length > 5"class="mask">+</div>
       </div>
@@ -157,18 +157,18 @@ export default {
     .img_container {
       //height: 580rpx;
       width: 700rpx;
-      img {
+      .image {
         margin: -3rpx 1rpx;
       }
       .img {
         display: inline-block;
       }
-      .img:nth-child(1) img,.img:nth-child(2) img {
+      .img:nth-child(1) .image,.img:nth-child(2) .image {
         display: inline-block;
         width: 340rpx;
         height: 340rpx;
       }
-      .img:nth-child(3) img,.img:nth-child(4) img,.img:nth-child(5) img{
+      .img:nth-child(3) .image,.img:nth-child(4) .image,.img:nth-child(5) .image{
         display: inline-block;
         width: 227rpx;
         height: 227rpx;
