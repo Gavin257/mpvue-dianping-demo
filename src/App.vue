@@ -1,14 +1,26 @@
 <script>
-/*相当于原生小程序的app.js*/
 export default {
+  onLoad() {
+    // 储存操作日志
+    var logs = wx.getStorageSync('logs') || []
+    logs.unshift(Date.now())
+    wx.setStorageSync('logs', logs)
+  },
+
+  globalData: {
+    userInfo: null,
+    hasUserInfo: false
+  }
 }
 </script>
 
-<style>
-/*将横向滑动栏隐藏*/
-::-webkit-scrollbar {
+<style lang="scss">
+  * {
+    font-family: 'Arial Narrow', Arial, sans-serif;
+  }
+  ::-webkit-scrollbar{
   width: 0;
   height: 0;
   color: transparent;
-}
+  }
 </style>

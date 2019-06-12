@@ -11,9 +11,9 @@
       </div>
       <div class="img_container">
         <div  class="img" v-for="(pic, _index0) in item.images">
-          <img  class="image" v-if="_index0 < 5" :src=pic mode="aspectFill" :data-mx="index" :data-idx="_index0" @click="handleImagePreview"  />
+          <img v-if="_index0 < 5" :src=pic mode="aspectFill" :data-mx="index" :data-idx="_index0" @click="handleImagePreview"  />
         </div>
-          <div v-if="item.images.length > 5"class="mask">+</div>
+          <div v-if="item.images.length > 5"class="mask" :data-mx="index" data-idx=4 @click="handleImagePreview">+</div>
       </div>
       <p class="content">{{item.content}}</p>
       <div class="thumbsUp">{{item.thumbsUp}}</div>
@@ -24,68 +24,55 @@
         <p class="more">查看更多评论</p>
       </div>
     </div>
+    <button class="post" @click="bindFindTap">发表动态</button> 
   </div>
 </template>
 
 <script>
 export default {
   onLoad() {
+    var _this = this;
+    wx.request({
+      url: "https://wx.gavin257.cn/follow",
+      method: 'GET',
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function(res){
+        _this.$mp.page.setData({
+          message : res.data.message
+        });
+        _this.message = res.data.message;
+      }
+    });
   },
   data() {
     return {
-      message: [
-        {
-          userInfo: {
-            nickName: "test_accout",
-            avatarUrl:  "../../static/images/follow/1/profile.png",
-          },
-          time: {
-            day: "6月10日"
-          },
-          date: "3月30日",
-          images: [
-            "../../static/images/follow/1/20190329/20190329212135.jpg",
-            "../../static/images/follow/1/20190329/20190329212157.jpg",
-            "../../static/images/follow/1/20190329/20190329212204.jpg",
-            "../../static/images/follow/1/20190329/20190329212210.jpg",
-            "../../static/images/follow/1/20190329/20190329212217.jpg",
-          ],
-          content: "来到日本著名建筑大师安藤忠雄设计的良渚艺术中心，欣赏用清水混凝土塑造的艺术品，感受光影交错的美妙，此处为游客们的拍照圣地。",
-          thumbsUp: 240,
-          comment: [
-            {
-              id: 2,
-              name: "用户1",
-              content: "赞！",
-            }
-          ]
-        },{
-          userInfo: {
-            nickName: "test_accout",
-            avatarUrl:  "../../static/images/follow/1/profile.png",
-          },
-          time: {
-            day: "6月10日"
-          },
-          date: "3月30日",
-          images: [
-            "../../static/images/follow/1/20190329/20190329212135.jpg",
-            "../../static/images/follow/1/20190329/20190329212157.jpg",
-            "../../static/images/follow/1/20190329/20190329212204.jpg",
-            "../../static/images/follow/1/20190329/20190329212210.jpg",
-            "../../static/images/follow/1/20190329/20190329212217.jpg",
-          ],
-          content: "来到日本著名建筑大师安藤忠雄设计的良渚艺术中心，欣赏用清水混凝土塑造的艺术品，感受光影交错的美妙，此处为游客们的拍照圣地。",
-          thumbsUp: 240,
-          comment: [
-            {
-              id: 2,
-              name: "用户1",
-              content: "赞！",
-            }
-          ]
-        }
-      ]
+      message: []
+      // message: [
+      //   {
+      //     id: 1,
+      //     name: "administrator_0",
+      //     profile:  "../../../static/images/follow/1/profile.png",
+      //     date: "3月30日",
+      //     img: [
+      //       "../../../static/images/follow/1/20190329/20190329212135.jpg",
+      //       "../../../static/images/follow/1/20190329/20190329212157.jpg",
+      //       "../../../static/images/follow/1/20190329/20190329212204.jpg",
+      //       "../../../static/images/follow/1/20190329/20190329212210.jpg",
+      //       "../../../static/images/follow/1/20190329/20190329212217.jpg",
+      //     ],
+      //     content: "来到日本著名建筑大师安藤忠雄设计的良渚艺术中心，欣赏用清水混凝土塑造的艺术品，感受光影交错的美妙，此处为游客们的拍照圣地。",
+      //     thumbsUp: 240,
+      //     comment: [
+      //       {
+      //         id: 2,
+      //         name: "用户1",
+      //         content: "赞！",
+      //       }
+      //       ]
+      //   }
+      // ]
     }
   },
   methods: {
@@ -136,6 +123,7 @@ export default {
         .date {
           font-size: 60%;
           span {
+            margin-right: 10rpx;
             color:#858585;
           }
         }
@@ -157,25 +145,40 @@ export default {
     .img_container {
       //height: 580rpx;
       width: 700rpx;
-      .image {
+      img {
         margin: -3rpx 1rpx;
       }
       .img {
         display: inline-block;
       }
-      .img:nth-child(1) .image,.img:nth-child(2) .image {
+      .img:nth-child(1) img,.img:nth-child(2) img {
         display: inline-block;
         width: 340rpx;
         height: 340rpx;
       }
-      .img:nth-child(3) .image,.img:nth-child(4) .image,.img:nth-child(5) .image{
+      .img:nth-child(3) img,.img:nth-child(4) img,.img:nth-child(5) img{
         display: inline-block;
         width: 227rpx;
         height: 227rpx;
       }
+      .mask {
+        display:inline-block;
+        box-sizing:border-box;
+        margin:-3rpx 0;
+        width:227rpx;
+        height:227rpx;
+        position:absolute;
+        right:40rpx;
+        background-color:#e0e0e0;
+        opacity:0.5;
+        font-size:200%;
+        text-align:center; 
+        padding:60rpx;  
+      }
     }
     .content {
       font-size: 75%;
+      margin: 10rpx 0 40rpx 0;
     }
     .thumbsUp {
       font-size: 70%;

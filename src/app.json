@@ -1,9 +1,11 @@
 {
   "pages": [
     "pages/index/main",
-    "pages/rank/main",
+    "pages/my/main",
     "pages/follow/main",
-    "pages/my/main"
+    "pages/rank/main",
+    "pages/post/main"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -16,6 +18,7 @@
     "backgroundColor": "#fafafa",
     "selectedColor": "#333",
     "borderStyle": "white",
+
     "list": [{
       "text": "首页",
       "pagePath": "pages/index/main",

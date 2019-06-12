@@ -30,7 +30,7 @@
         </div>
         <div class="more">
           <span>查看全部</span>
-          <img src="../../../static/images/rank/arrow.jpg" class="arrow">
+          <img src="https://wx.gavin257.cn/public/images/arrow.jpg" class="arrow">
         </div>
       </div>
     </div>
@@ -54,17 +54,17 @@ export default {
         {
           title: "必吃榜",
           desc: "全城必去",
-          bg: "../../static/images/rank/rank_1.jpg",
+          bg: "https://wx.gavin257.cn/public/images/rank_1.jpg",
         },
         {
           title: "黑珍珠",
           desc: "食之甄选",
-          bg: "../../static/images/rank/rank_2.jpg",
+          bg: "https://wx.gavin257.cn/public/images/rank_2.jpg",
         },
         {
           title: "人气菜品",
           desc: "本地热搜",
-          bg: "../../static/images/rank/rank_3.jpg",
+          bg: "https://wx.gavin257.cn/public/images/rank_3.jpg",
         }
       ],
       neighbour: [
@@ -73,7 +73,7 @@ export default {
           rank: [
             {
               name: "西湖醋鱼",
-              img: "../../static/images/rank/neighbour/img1.jpg",
+              img: "https://wx.gavin257.cn/public/images/rank/neighbour/img1.jpg",
               commentNum: 855,
               prize: 62,
               location: "古墩路沿线",
@@ -83,7 +83,7 @@ export default {
             },
             {
               name: "糖醋里脊",
-              img: "../../static/images/rank/neighbour/img2.jpg",
+              img: "https://wx.gavin257.cn/public/images/rank/neighbour/img2.jpg",
               commentNum: 56,
               prize: 66,
               location: "古墩路沿线",
@@ -93,7 +93,7 @@ export default {
             },
             {
               name: "酥油饼",
-              img: "../../static/images/rank/neighbour/img3.jpg",
+              img: "https://wx.gavin257.cn/public/images/rank/neighbour/img3.jpg",
               commentNum: 508,
               prize: 68,
               loaction: "三墩镇",
@@ -115,27 +115,27 @@ export default {
       category: [
         {
           name: "川菜",
-          bg: "../../static/images/rank/rank_4.jpg"
+          bg: "https://wx.gavin257.cn/public/images/rank_4.jpg"
         },
         {
           name: "火锅",
-          bg: "../../static/images/rank/rank_5.jpg"
+          bg: "https://wx.gavin257.cn/public/images/rank_5.jpg"
         },
         {
           name: "日本菜",
-          bg: "../../static/images/rank/rank_6.jpg"
+          bg: "https://wx.gavin257.cn/public/images/rank_6.jpg"
         },
         {
           name: "西餐",
-          bg: "../../static/images/rank/rank_7.jpg"
+          bg: "https://wx.gavin257.cn/public/images/rank_7.jpg"
         }, 
         {
           name: "烧烤",
-          bg: "../../static/images/rank/rank_8.jpg"
+          bg: "https://wx.gavin257.cn/public/images/rank_8.jpg"
         },
         {
           name: "全部美食",
-          bg: "../../static/images/rank/rank_9.jpg"
+          bg: "https://wx.gavin257.cn/public/images/rank_9.jpg"
         }
       ]
     }
@@ -210,7 +210,7 @@ export default {
     .business {
       display: flex;
       margin: 10rpx 0;
-      .img {
+      img {
         width: 170rpx;
         height: 170rpx;
       }

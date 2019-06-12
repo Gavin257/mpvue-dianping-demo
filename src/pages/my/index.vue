@@ -11,14 +11,14 @@
     <div class="order_list">
       <div class="title">我的订单</div>
       <div class="option" v-for="item in order_list">
-        <img :src=item.icon class="img"/>
+        <img :src=item.icon />
         <p class="desc">{{item.desc}}</p>
       </div>
     </div>
     <div class="tool_list">
       <div class="title">必备工具</div>
       <div class="option" v-for="item in tool_list">
-        <img :src=item.icon class="img"/>
+        <img :src=item.icon />
         <p class="desc">{{item.desc}}</p>
       </div>
     </div>
@@ -26,17 +26,51 @@
       <span>{{item.desc}}</span>
       <div class="arrow">></div>
     </div>
+    <button :v-if="!hasUserInfo && canIUse" open-type="getUserInfo" @getuserinfo="getUserInfo"> 获取头像昵称 </button>
   </div>
 </template>
 
 <script>
 export default {
   methods: { 
+    getUserInfo: function(e) {
+      const app = getApp();
+      var _this = this;
+      wx.login({
+      success(res) {
+        if (res.code) {
+          wx.request({
+            url: "https://wx.gavin257.cn/onLogin",
+            method: 'POST',
+            header: {
+              'content-type': 'application/json'
+            },
+            data: {
+              code: res.code,
+              userInfo: e.mp.detail.userInfo
+            },
+            success: function(res){
+              wx.setStorageSync("sessionID", res.data);
+            }
+          });
+        } else {
+          console.log("login failded! " + res.errMsg)
+        }
+      }
+    })
+    console.log(e)
+    app.globalData.userInfo = e.mp.detail.userInfo;
+    _this.$mp.page.setData({
+      userInfo: e.mp.detail.userInfo,
+      hasUserInfo: true
+    });
+    _this.userInfo=e.mp.detail.userInfo;
+  }
 },
   data() {
     return {
       userInfo: {
-        avatarUrl: "../../static/images/my/user.jpg",
+        avatarUrl: "https://wx.gavin257.cn/public/images/user.jpg",
         nickName: "游客",
         city: ""
       },
@@ -46,42 +80,42 @@ export default {
       my: {
         id: 0,
         name: "administrator_0",
-        profile: "../../static/images/my/profile.jpg",
+        profile: "https://wx.gavin257.cn/public/images/my/profile.jpg",
         address: "杭州",
       },
       order_list: [
         {
-        icon: "../../static/images/my/icon1.jpg",
+        icon: "https://wx.gavin257.cn/public/images/my/icon1.jpg",
         desc: "待付款",
         },
         {
-          icon: "../../static/images/my/icon2.jpg",
+          icon: "https://wx.gavin257.cn/public/images/my/icon2.jpg",
           desc: "可使用",
         },
         {
-          icon: "../../static/images/my/icon3.jpg",
+          icon: "https://wx.gavin257.cn/public/images/my/icon3.jpg",
           desc: "退款/售后",
         },
           {
-            icon: "../../static/images/my/icon4.jpg",
+            icon: "https://wx.gavin257.cn/public/images/my/icon4.jpg",
             desc: "全部订单",
           }
       ],
       tool_list: [
         {
-          icon: "../../static/images/my/icon5.jpg",
+          icon: "https://wx.gavin257.cn/public/images/my/icon5.jpg",
           desc: "领券中心",
         }, 
         {
-          icon: "../../static/images/my/icon6.jpg",
+          icon: "https://wx.gavin257.cn/public/images/my/icon6.jpg",
           desc: "今天吃啥",
         },
         {
-          icon: "../../static/images/my/icon7.jpg",
+          icon: "https://wx.gavin257.cn/public/images/my/icon7.jpg",
           desc: "聚餐投票",
         },
         {
-          icon: "../../static/images/my/icon8.jpg",
+          icon: "https://wx.gavin257.cn/public/images/my/icon8.jpg",
           desc: "贡献信息",
         }
       ],
@@ -155,7 +189,7 @@ export default {
       margin: 0 10rpx;
       width: 150rpx;
       font-size: 70%;
-      .img {
+      img {
         margin: 0 40rpx;
         width: 70rpx;
         height: 70rpx;

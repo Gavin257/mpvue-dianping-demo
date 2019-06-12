@@ -1,6 +1,12 @@
-/*对每个页面生成vue实例，并挂载*/
 import Vue from 'vue'
 import App from './index'
 
 const app = new Vue(App)
 app.$mount()
+
+export default {
+  config: {
+    "navigationBarTitleText": '大众点评',
+    "navigationBarTextStyle": 'black'
+  }
+}
